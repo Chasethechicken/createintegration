@@ -85,7 +85,7 @@ public class RollingCategory implements IRecipeCategory<RollingRecipe> {
     }
 
 
-    @Override
+    /*@Override
     public void draw(@Nonnull RollingRecipe recipe, double mouseX, double mouseY) {
         AllGuiTextures.JEI_SLOT.draw(26, 8);
         AllGuiTextures.JEI_SLOT.draw(131, 8);
@@ -94,5 +94,5 @@ public class RollingCategory implements IRecipeCategory<RollingRecipe> {
         AllGuiTextures.JEI_LONG_ARROW.draw(52, 12);
 
         roller.draw(72, 25);
-    }
+    }*/
 }

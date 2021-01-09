@@ -42,7 +42,7 @@ public class DynamoTile extends KineticTileEntity implements ITickableTileEntity
 
     @Override
     public void tick() {
-        super.tick();
+//        super.tick();
         energy.ifPresent(e -> ((CustomEnergyStorage) e).addEnergy((int) Math.abs(Config.DYNAMO_GENERATE_MULTIPLIER.get() * getSpeed())));
         markDirty();
         sendOutPower();
@@ -63,7 +63,7 @@ public class DynamoTile extends KineticTileEntity implements ITickableTileEntity
 
 
     private void sendOutPower() {
-        energy.ifPresent(energy -> {
+        /*energy.ifPresent(energy -> {
             if (energy.getEnergyStored() > 0 && getBlockState().has(BlockStateProperties.FACING)) {
                 Direction direction = getBlockState().get(BlockStateProperties.FACING).getOpposite();
                 assert world != null;
@@ -77,17 +77,17 @@ public class DynamoTile extends KineticTileEntity implements ITickableTileEntity
                 }
             }
         });
-        markDirty();
+        markDirty();*/
     }
 
 
-    @Override
+    /*@Override
     public void read(CompoundNBT tag) {
         CompoundNBT energyTag = tag.getCompound("energy");
         energy.ifPresent(h -> ModUtil.safeNBTCast(h).deserializeNBT(energyTag));
 
-        super.read(tag);
-    }
+//        super.read(tag);
+    }*/
 
     @Override
     public CompoundNBT write(CompoundNBT tag) {

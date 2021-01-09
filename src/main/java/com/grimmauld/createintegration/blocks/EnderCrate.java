@@ -44,7 +44,7 @@ public class EnderCrate extends Block implements ITE<EnderCrateTile>, IWrenchabl
     }
 
 
-    @Nonnull
+    /*@Nonnull
     @Override
     public ActionResultType onUse(@Nonnull BlockState state, World world, @Nonnull BlockPos pos, @Nonnull PlayerEntity player, @Nonnull Hand hand,
                                   @Nonnull BlockRayTraceResult result) {
@@ -58,7 +58,7 @@ public class EnderCrate extends Block implements ITE<EnderCrateTile>, IWrenchabl
             return ActionResultType.SUCCESS;
         }
         return ActionResultType.PASS;
-    }
+    }*/
 
     @Override
     public boolean hasTileEntity(BlockState state) {

@@ -11,7 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Vector3f;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
@@ -24,6 +24,11 @@ public class RollingMachineTileEntityRenderer extends SafeTileEntityRenderer<Rol
 
     public RollingMachineTileEntityRenderer(TileEntityRendererDispatcher dispatcher) {
         super(dispatcher);
+    }
+
+    @Override
+    public void render(RollingMachineTile tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
+
     }
 
     @Override
@@ -65,9 +70,9 @@ public class RollingMachineTileEntityRenderer extends SafeTileEntityRenderer<Rol
             ms.translate(alongZ ? offset : .5, blockItem ? .925f : 13f / 16f, alongZ ? .5 : offset);
 
             ms.scale(.5f, .5f, .5f);
-            if (alongZ)
+            /*if (alongZ)
                 ms.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90));
-            ms.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));
+            ms.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));*/
             itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, light, overlay, ms, buffer);
             ms.pop();
         }

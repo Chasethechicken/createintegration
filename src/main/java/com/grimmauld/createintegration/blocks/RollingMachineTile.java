@@ -67,5 +67,10 @@ public class RollingMachineTile extends BeltMachineTile {
     public float calculateStressApplied() {
         return Config.ROLLER_SU.get();
     }
+
+    @Override
+    public void tick() {
+
+    }
 }
 

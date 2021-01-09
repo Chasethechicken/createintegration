@@ -25,7 +25,7 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -69,15 +69,15 @@ public abstract class BeltMachineTile extends KineticTileEntity {
     }
 
     private BlockPos getTargetingBeltBlock() {
-        Vec3d itemMovement = getItemMovementVec();
+        Vector3d itemMovement = getItemMovementVec();
         return pos.add(-itemMovement.x + .5f, -itemMovement.y + .5f, -itemMovement.z + .5f);
     }
 
 
-    @Override
+    /*@Override
     public boolean hasFastRenderer() {
         return false;
-    }
+    }*/
 
     @Override
     public void onSpeedChanged(float prevSpeed) {
@@ -98,15 +98,15 @@ public abstract class BeltMachineTile extends KineticTileEntity {
         return super.write(compound);
     }
 
-    @Override
+    /*@Override
     public void read(CompoundNBT compound) {
         super.read(compound);
         inventory.deserializeNBT(compound.getCompound("Inventory"));
         recipeIndex = compound.getInt("RecipeIndex");
         recipeNumber = compound.getInt("RecipeNumber");
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void tick() {
         super.tick();
         if (getSpeed() == 0)
@@ -176,7 +176,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                 start();
             markDirty();
         }
-    }
+    }*/
 
     protected void ejectItems(ItemStack outputStack) {
         if (outputStack.isEmpty()) {
@@ -185,12 +185,12 @@ public abstract class BeltMachineTile extends KineticTileEntity {
 
         markDirty();
         inventory.remainingTime = -1;
-        Vec3d itemMovement = getItemMovementVec();
+        Vector3d itemMovement = getItemMovementVec();
         Direction itemMovementFacing = Direction.getFacingFromVector(itemMovement.x, itemMovement.y, itemMovement.z);
-        Vec3d outPos = VecHelper.getCenterOf(pos).add(itemMovement.scale(.5f).add(0.0, .5, 0.0));
-        Vec3d outMotion = itemMovement.scale(.0625).add(0.0, .125, 0.0);
+        Vector3d outPos = VecHelper.getCenterOf(pos).add(itemMovement.scale(.5f).add(0.0, .5, 0.0));
+        Vector3d outMotion = itemMovement.scale(.0625).add(0.0, .125, 0.0);
 
-        // Try moving items onto the belt
+        /*// Try moving items onto the belt
         BlockPos nextPos = pos.add(itemMovement.x, itemMovement.y, itemMovement.z);
         assert world != null;
         if (AllBlocks.BELT.has(world.getBlockState(nextPos))) {
@@ -200,15 +200,15 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                     return;
                 }
             }
-        }
+        }*/
 
-        // Try moving items onto next saw/belt machine
+        /*// Try moving items onto next saw/belt machine
         if (AllBlocks.MECHANICAL_SAW.has(world.getBlockState(nextPos)) || world.getBlockState(nextPos).getBlock() instanceof BeltMachine) {
             TileEntity te = world.getTileEntity(nextPos);
             if (te != null) {
                 if (te instanceof SawTileEntity) {
                     SawTileEntity sawTileEntity = (SawTileEntity) te;
-                    Vec3d otherMovement = sawTileEntity.getItemMovementVec();
+                    Vector3d otherMovement = sawTileEntity.getItemMovementVec();
                     if (Direction.getFacingFromVector(otherMovement.x, otherMovement.y,
                             otherMovement.z) != itemMovementFacing.getOpposite()) {
                         ProcessingInventory sawInv = sawTileEntity.inventory;
@@ -220,7 +220,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                 }
                 if (te instanceof BeltMachineTile) {
                     BeltMachineTile beltMachineTile = (BeltMachineTile) te;
-                    Vec3d otherMovement = beltMachineTile.getItemMovementVec();
+                    Vector3d otherMovement = beltMachineTile.getItemMovementVec();
                     if (Direction.getFacingFromVector(otherMovement.x, otherMovement.y, otherMovement.z) != itemMovementFacing.getOpposite()) {
                         outputStack = beltMachineTile.mergeInsert(outputStack);
                         if (outputStack.isEmpty()) {
@@ -229,7 +229,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                     }
                 }
             }
-        }
+        }*/
 
         // Eject Items
         ItemEntity entityIn = new ItemEntity(world, outPos.x, outPos.y, outPos.z, outputStack);
@@ -293,18 +293,18 @@ public abstract class BeltMachineTile extends KineticTileEntity {
 
         assert world != null;
         Random r = world.rand;
-        Vec3d vec = getItemMovementVec();
-        Vec3d pos = VecHelper.getCenterOf(this.pos);
+        Vector3d vec = getItemMovementVec();
+        Vector3d pos = VecHelper.getCenterOf(this.pos);
         float offset = inventory.recipeDuration != 0 ? inventory.remainingTime / inventory.recipeDuration : 0;
         offset -= .5f;
         world.addParticle(particleData, pos.getX() + -vec.x * offset, pos.getY() + .45f, pos.getZ() + -vec.z * offset,
                 -vec.x * speed, r.nextFloat() * speed, -vec.z * speed);
     }
 
-    public Vec3d getItemMovementVec() {
+    public Vector3d getItemMovementVec() {
         boolean alongX = getBlockState().get(BlockStateProperties.FACING).getXOffset() != 0;
         int offset = getSpeed() > 0 ? -1 : 1;
-        return new Vec3d(offset * (alongX ? 0 : -1), 0, offset * (alongX ? 1 : 0));
+        return new Vector3d(offset * (alongX ? 0 : -1), 0, offset * (alongX ? 1 : 0));
     }
 
     protected abstract List<ItemStack> applyRecipe();

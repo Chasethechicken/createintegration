@@ -2,6 +2,7 @@ package com.grimmauld.createintegration.blocks;
 
 import com.grimmauld.createintegration.CreateIntegration;
 import com.grimmauld.createintegration.tools.Lang;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
@@ -15,25 +16,25 @@ public class EnderGui extends ContainerScreen<EnderContainer> {
         super(screenContainer, inv, name);
     }
 
-    @Override
+    /*@Override
     public void render(int mouseX, int mouseY, float partialTicks) {
         this.renderBackground();
-        super.render(mouseX, mouseY, partialTicks);
-        this.renderHoveredToolTip(mouseX, mouseY);
-    }
+        super.render(null, mouseX, mouseY, partialTicks);
+//        this.renderHoveredToolTip(mouseX, mouseY);
+    }*/
 
-    @Override
+    /*@Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         drawCenteredString(Minecraft.getInstance().fontRenderer, Lang.translate("generic.ender_id") + ": " + container.getEnderId(), 60, 5, 0xffffff);
-    }
+    }*/
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+    protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
         // GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         assert this.minecraft != null;
         this.minecraft.getTextureManager().bindTexture(GUI);
         int relX = (this.width - this.xSize) / 2;
         int relY = (this.height - this.ySize) / 2;
-        this.blit(relX, relY, 0, 0, this.xSize, this.ySize);
+//        this.blit(relX, relY, 0, 0, this.xSize, this.ySize);
     }
 }

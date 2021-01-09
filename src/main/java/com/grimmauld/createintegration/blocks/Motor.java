@@ -27,7 +27,6 @@ public class Motor extends DirectionalKineticBlock {
         super(Properties.create(Material.IRON)
                 .sound(SoundType.METAL)
                 .hardnessAndResistance(2.0f)
-                .lightValue(0)
                 .harvestTool(ToolType.PICKAXE)
                 .harvestLevel(2)
         );
@@ -49,10 +48,10 @@ public class Motor extends DirectionalKineticBlock {
         builder.add(BlockStateProperties.FACING, BlockStateProperties.POWERED);
     }
 
-    @Override
+    /*@Override
     protected boolean hasStaticPart() {
         return true;
-    }
+    }*/
 
     @Override
     public boolean hasShaftTowards(IWorldReader world, BlockPos pos, BlockState state, Direction face) {

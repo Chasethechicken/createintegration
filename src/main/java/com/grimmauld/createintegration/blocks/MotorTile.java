@@ -38,7 +38,7 @@ public class MotorTile extends GeneratingKineticTileEntity {
 
     @Override
     public void tick() {
-        super.tick();
+//        super.tick();
         boolean activeBefore = active;
         active = false;
         energy.ifPresent(energy -> {
@@ -74,13 +74,13 @@ public class MotorTile extends GeneratingKineticTileEntity {
 
     }
 
-    @Override
+    /*@Override
     public void read(CompoundNBT tag) {
         CompoundNBT energyTag = tag.getCompound("energy");
         energy.ifPresent(h -> ModUtil.safeNBTCast(h).deserializeNBT(energyTag));
 
         super.read(tag);
-    }
+    }*/
 
     @Override
     public CompoundNBT write(CompoundNBT tag) {
