@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[35,)"
 issueTrackerURL="https://github.com/LordGrimmauld/createintegration/issues"
 logoFile="createintegration_logo.png"
 [[mods]]
@@ -13,18 +13,18 @@ description='''This mod adds an interface to convert mechanical energy provided 
 [[dependencies.createintegration]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[31,)" #mandatory
+    versionRange="[35,)" #mandatory
     ordering="NONE"
     side="BOTH"
 [[dependencies.createintegration]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]" #keep updated
+    versionRange="[1.16.2]" #keep updated
     ordering="NONE"
     side="BOTH"
 [[dependencies.createintegration]]
     modId="create"
     mandatory=true
-    versionRange="[mc1.15.2_v0.2.4,)" #keep updated
+    versionRange="[mc1.16.3_v0.3b,)" #keep updated
     ordering="NONE"
     side="BOTH"
