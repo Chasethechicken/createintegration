@@ -27,7 +27,7 @@ public class Dynamo extends DirectionalKineticBlock {
                 .sound(SoundType.METAL)
                 .hardnessAndResistance(2.0f)
                 .harvestTool(ToolType.PICKAXE)
-                .harvestLevel(2)
+                .harvestLevel(2) // FIXME
         );
         setRegistryName("dynamo");
     }
@@ -56,7 +56,7 @@ public class Dynamo extends DirectionalKineticBlock {
         builder.add(BlockStateProperties.FACING, BlockStateProperties.POWERED);
     }
 
-    /*@Override
+    /*@Override // FIXME
     protected boolean hasStaticPart() {
         return true;
     }*/

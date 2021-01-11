@@ -28,7 +28,7 @@ public class RollingMachineTileEntityRenderer extends SafeTileEntityRenderer<Rol
 
     @Override
     public void render(RollingMachineTile tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
-
+        // FIXME
     }
 
     @Override
@@ -70,7 +70,7 @@ public class RollingMachineTileEntityRenderer extends SafeTileEntityRenderer<Rol
             ms.translate(alongZ ? offset : .5, blockItem ? .925f : 13f / 16f, alongZ ? .5 : offset);
 
             ms.scale(.5f, .5f, .5f);
-            /*if (alongZ)
+            /*if (alongZ) // FIXME
                 ms.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90));
             ms.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));*/
             itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, light, overlay, ms, buffer);

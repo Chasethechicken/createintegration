@@ -78,7 +78,7 @@ public class EnderCrateTile extends SmartTileEntity implements INamedContainerPr
         return super.getCapability(cap, side);
     }
 
-    /*public void read(CompoundNBT tag) {
+    /*public void read(CompoundNBT tag) { // FIXME
         super.read(tag);
         int v = tag.getInt("ender_id");
         id.value = v;
@@ -98,7 +98,7 @@ public class EnderCrateTile extends SmartTileEntity implements INamedContainerPr
         CenteredSideValueBoxTransform slot =
                 new CenteredSideValueBoxTransform((ender_crate, side) -> ender_crate.get(BlockStateProperties.FACING) == side);
 
-        /*id = new ScrollValueBehaviour(Lang.translate("generic.ender_id"), this, slot);
+        /*id = new ScrollValueBehaviour(Lang.translate("generic.ender_id"), this, slot); // FIXME
         id.between(0, 256);
         id.value = 0;
         id.scrollableValue = 0;
@@ -144,7 +144,7 @@ public class EnderCrateTile extends SmartTileEntity implements INamedContainerPr
         }
     }
 
-    @Override
+    @Override // FIXME
     public void tick() {
 
     }

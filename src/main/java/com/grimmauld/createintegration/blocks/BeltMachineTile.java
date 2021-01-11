@@ -74,7 +74,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
     }
 
 
-    /*@Override
+    /*@Override  // FIXME
     public boolean hasFastRenderer() {
         return false;
     }*/
@@ -98,7 +98,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
         return super.write(compound);
     }
 
-    /*@Override
+    /*@Override  // FIXME
     public void read(CompoundNBT compound) {
         super.read(compound);
         inventory.deserializeNBT(compound.getCompound("Inventory"));
@@ -106,7 +106,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
         recipeNumber = compound.getInt("RecipeNumber");
     }*/
 
-    /*@Override
+    /*@Override // FIXME
     public void tick() {
         super.tick();
         if (getSpeed() == 0)
@@ -190,7 +190,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
         Vector3d outPos = VecHelper.getCenterOf(pos).add(itemMovement.scale(.5f).add(0.0, .5, 0.0));
         Vector3d outMotion = itemMovement.scale(.0625).add(0.0, .125, 0.0);
 
-        /*// Try moving items onto the belt
+        /*// Try moving items onto the belt  // FIXME
         BlockPos nextPos = pos.add(itemMovement.x, itemMovement.y, itemMovement.z);
         assert world != null;
         if (AllBlocks.BELT.has(world.getBlockState(nextPos))) {
@@ -202,7 +202,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
             }
         }*/
 
-        /*// Try moving items onto next saw/belt machine
+        /*// Try moving items onto next saw/belt machine // FIXME
         if (AllBlocks.MECHANICAL_SAW.has(world.getBlockState(nextPos)) || world.getBlockState(nextPos).getBlock() instanceof BeltMachine) {
             TileEntity te = world.getTileEntity(nextPos);
             if (te != null) {

@@ -33,7 +33,7 @@ public class ModBlocks {
     @ObjectHolder("createintegration:copper_pressure_plate")
     public static CopperPressurePlate COPPER_PRESSURE_PLATE;
 
-    /*@ObjectHolder("createintegration:chunk_loader")
+    /*@ObjectHolder("createintegration:chunk_loader") // FIXME
     public static ChunkLoader CHUNK_LOADER;*/
 
     @ObjectHolder("createintegration:chunk_loader")

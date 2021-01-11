@@ -53,7 +53,7 @@ public class CopperPressurePlate extends WeightedPressurePlateBlock {
                 if (!worldIn.isBlockPresent(neighbourPos))
                     continue;
                 BlockState neighborState = worldIn.getBlockState(neighbourPos);
-                /*if (neighborState.has(OXIDIZATION) && neighborState.get(OXIDIZATION) != 0) {
+                /*if (neighborState.has(OXIDIZATION) && neighborState.get(OXIDIZATION) != 0) { // FIXME
                     neighbors.add(neighborState.get(OXIDIZATION));
                 }
                 if (Block.hasSolidSide(neighborState, worldIn, neighbourPos, facing.getOpposite())) {
@@ -69,7 +69,7 @@ public class CopperPressurePlate extends WeightedPressurePlateBlock {
         }
     }
 
-    /*@Override
+    /*@Override // FIXME
     public float getBlockHardness(BlockState blockState, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
         return this.blockHardness - 0.2f * blockState.get(OXIDIZATION);
     }*/

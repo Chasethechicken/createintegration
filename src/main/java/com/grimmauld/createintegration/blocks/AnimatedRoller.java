@@ -11,11 +11,11 @@ import net.minecraft.util.Direction.Axis;
 
 public class AnimatedRoller extends AnimatedKinetics {
 
-    /*@Override
+    /*@Override // FIXME
     public void draw(int xOffset, int yOffset) {
         RenderSystem.pushMatrix();
         RenderSystem.translatef(xOffset, yOffset, 0);
-//        AllGuiTextures.JEI_SHADOW.draw(-16, 13);
+//        AllGuiTextures.JEI_SHADOW.draw(-16, 13); // FIXME
 
         RenderSystem.translatef(0, 0, 200);
         RenderSystem.translatef(-6, 19, 0);
@@ -23,7 +23,7 @@ public class AnimatedRoller extends AnimatedKinetics {
         RenderSystem.rotatef(90 - 22.5f, 0, 1, 0);
         int scale = 25;
 
-        *//*GuiGameElement.of(shaft(Axis.X))
+        *//*GuiGameElement.of(shaft(Axis.X)) // FIXME
                 .rotateBlock(-getCurrentAngle(), 0, 0)
                 .scale(scale)
                 .render();
@@ -40,6 +40,6 @@ public class AnimatedRoller extends AnimatedKinetics {
 
     @Override
     public void draw(MatrixStack matrixStack, int i, int i1) {
-
+         // FIXME
     }
 }

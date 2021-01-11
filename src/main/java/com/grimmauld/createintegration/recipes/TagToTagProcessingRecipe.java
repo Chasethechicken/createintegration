@@ -5,9 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.grimmauld.createintegration.CreateIntegration;
 //import com.simibubi.create.content.contraptions.processing.ProcessingIngredient;
-import com.simibubi.create.content.contraptions.processing.ProcessingOutput;
+import com.simibubi.create.content.contraptions.processing.ProcessingOutput; // FIXME
 import com.simibubi.create.content.contraptions.processing.ProcessingRecipe;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder;
+import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder.ProcessingRecipeFactory;
 import com.simibubi.create.content.contraptions.processing.ProcessingRecipeSerializer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,12 +22,12 @@ import java.util.Objects;
 
 public class TagToTagProcessingRecipe<T extends ProcessingRecipe<?>> extends ProcessingRecipeSerializer<T> {
 
-    public TagToTagProcessingRecipe(ProcessingRecipeBuilder.ProcessingRecipeFactory<T> factory, String type) {
+    public TagToTagProcessingRecipe(ProcessingRecipeFactory<T> factory, String type) {
         super(factory);
         this.setRegistryName(new ResourceLocation(CreateIntegration.modid, type));
     }
 
-    /*@Override
+    /*@Override // FIXME
     public T read(ResourceLocation recipeId, JsonObject json) {
         String s = JSONUtils.getString(json, "group", "");
 

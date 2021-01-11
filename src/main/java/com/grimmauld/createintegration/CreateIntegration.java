@@ -107,7 +107,7 @@ public class CreateIntegration {
 
     public static void clientInit(FMLClientSetupEvent event) {
         ScreenManager.registerFactory(ModBlocks.ENDER_CONTAINER, EnderGui::new);
-//        RenderTypeLookup.setRenderLayer(ModBlocks.CHUNK_LOADER, RenderType.getTranslucent());
+//        RenderTypeLookup.setRenderLayer(ModBlocks.CHUNK_LOADER, RenderType.getTranslucent()); // FIXME
         RenderTypeLookup.setRenderLayer(ModBlocks.ROLLING_MACHINE, RenderType.getCutoutMipped());  // FIXME
         registerRenderers();
     }
@@ -219,7 +219,7 @@ public class CreateIntegration {
             event.getRegistry().register(new BlockItem(ModBlocks.BRASS_PRESSURE_PLATE, properties).setRegistryName("brass_pressure_plate"));
             event.getRegistry().register(new BlockItem(ModBlocks.COPPER_PRESSURE_PLATE, properties).setRegistryName("copper_pressure_plate"));
             event.getRegistry().register(new BlockItem(ModBlocks.ZINC_PRESSURE_PLATE, properties).setRegistryName("zinc_pressure_plate"));
-//            event.getRegistry().register(new BlockItem(ModBlocks.CHUNK_LOADER, properties).setRegistryName("chunk_loader"));
+//            event.getRegistry().register(new BlockItem(ModBlocks.CHUNK_LOADER, properties).setRegistryName("chunk_loader")); // FIXME
             event.getRegistry().register(new BlockItem(ModBlocks.ENDER_CRATE, properties).setRegistryName("ender_crate"));
             logger.info("finished items registering");
         }
@@ -236,7 +236,7 @@ public class CreateIntegration {
             event.getRegistry().register(new BrassPressurePlate());
             event.getRegistry().register(new CopperPressurePlate());
             event.getRegistry().register(new ZincPressurePlate());
-//            event.getRegistry().register(new ChunkLoader());
+//            event.getRegistry().register(new ChunkLoader()); // FIXME
             event.getRegistry().register(new EnderCrate());
             logger.info("finished blocks registering");
 
@@ -250,7 +250,7 @@ public class CreateIntegration {
             event.getRegistry().register(TileEntityType.Builder.create(DynamoTile::new, ModBlocks.DYNAMO).build(null).setRegistryName("dynamo"));
             event.getRegistry().register(TileEntityType.Builder.create(MotorTile::new, ModBlocks.MOTOR).build(null).setRegistryName("motor"));
             event.getRegistry().register(TileEntityType.Builder.create(RollingMachineTile::new, ModBlocks.ROLLING_MACHINE).build(null).setRegistryName("rolling_machine"));
-//            event.getRegistry().register(TileEntityType.Builder.create(ChunkLoaderTile::new, ModBlocks.CHUNK_LOADER).build(null).setRegistryName("chunk_loader"));
+//            event.getRegistry().register(TileEntityType.Builder.create(ChunkLoaderTile::new, ModBlocks.CHUNK_LOADER).build(null).setRegistryName("chunk_loader")); // FIXME
             event.getRegistry().register(TileEntityType.Builder.create(EnderCrateTile::new, ModBlocks.ENDER_CRATE).build(null).setRegistryName("ender_crate"));
             logger.info("finished TEs registering");
         }

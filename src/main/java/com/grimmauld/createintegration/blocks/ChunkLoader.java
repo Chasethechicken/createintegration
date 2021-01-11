@@ -2,7 +2,7 @@ package com.grimmauld.createintegration.blocks;
 
 import com.grimmauld.createintegration.CreateIntegration;
 import com.grimmauld.createintegration.misc.ChunkLoaderMovementBehaviour;
-//import com.simibubi.create.content.contraptions.components.structureMovement.IPortableBlock;
+//import com.simibubi.create.content.contraptions.components.structureMovement.IPortableBlock; // FIXME
 import com.simibubi.create.content.contraptions.components.structureMovement.MovementBehaviour;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-/*public class ChunkLoader extends Block implements IPortableBlock {
+/*public class ChunkLoader extends Block implements IPortableBlock { // FIXME
     public static MovementBehaviour MOVEMENT = new ChunkLoaderMovementBehaviour();
 
 
@@ -30,7 +30,7 @@ import javax.annotation.Nonnull;
         world.getCapability(CreateIntegration.CHUNK_LOADING_CAPABILITY, null).ifPresent(cap -> cap.addblock(pos));
 
     }
-*//*
+*//* // FIXME
     @Override
     public void onReplaced(@Nonnull BlockState state, World world, @Nonnull BlockPos pos, @Nonnull BlockState newState, boolean isMoving) {
         if (world.isRemote) return;

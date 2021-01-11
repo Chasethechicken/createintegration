@@ -16,25 +16,25 @@ public class EnderGui extends ContainerScreen<EnderContainer> {
         super(screenContainer, inv, name);
     }
 
-    /*@Override
+    /*@Override // FIXME
     public void render(int mouseX, int mouseY, float partialTicks) {
         this.renderBackground();
         super.render(null, mouseX, mouseY, partialTicks);
 //        this.renderHoveredToolTip(mouseX, mouseY);
     }*/
 
-    /*@Override
+    /*@Override // FIXME
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         drawCenteredString(Minecraft.getInstance().fontRenderer, Lang.translate("generic.ender_id") + ": " + container.getEnderId(), 60, 5, 0xffffff);
     }*/
 
     @Override
     protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
-        // GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        // GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F); // FIXME
         assert this.minecraft != null;
         this.minecraft.getTextureManager().bindTexture(GUI);
         int relX = (this.width - this.xSize) / 2;
         int relY = (this.height - this.ySize) / 2;
-//        this.blit(relX, relY, 0, 0, this.xSize, this.ySize);
+//        this.blit(relX, relY, 0, 0, this.xSize, this.ySize); // FIXME
     }
 }

@@ -28,7 +28,7 @@ public class Motor extends DirectionalKineticBlock {
                 .sound(SoundType.METAL)
                 .hardnessAndResistance(2.0f)
                 .harvestTool(ToolType.PICKAXE)
-                .harvestLevel(2)
+                .harvestLevel(2) // FIXME
         );
         setRegistryName("motor");
     }
@@ -48,7 +48,7 @@ public class Motor extends DirectionalKineticBlock {
         builder.add(BlockStateProperties.FACING, BlockStateProperties.POWERED);
     }
 
-    /*@Override
+    /*@Override // FIXME
     protected boolean hasStaticPart() {
         return true;
     }*/

@@ -28,7 +28,7 @@ public abstract class BeltMachine extends DirectionalAxisKineticBlock implements
     public static final BooleanProperty RUNNING = BooleanProperty.create("running");
 
     public BeltMachine(String registryName) {
-        super(Properties.from(Blocks.ANDESITE));
+        super(Properties.from(Blocks.ANDESITE));  // FIXME
         setRegistryName(registryName);
         setDefaultState(getDefaultState().with(RUNNING, false));
     }
@@ -41,7 +41,7 @@ public abstract class BeltMachine extends DirectionalAxisKineticBlock implements
     @Override
     public abstract TileEntity createTileEntity(BlockState state, IBlockReader world);
 
-    /*@Override
+    /*@Override  // FIXME
     protected boolean hasStaticPart() {
         return true;
     }*/
@@ -73,7 +73,7 @@ public abstract class BeltMachine extends DirectionalAxisKineticBlock implements
         return state.get(BlockStateProperties.FACING).getAxis();
     }
 
-    /*@Override
+    /*@Override  // FIXME
     public boolean isNormalCube(@Nonnull BlockState state, @Nonnull IBlockReader reader, @Nonnull BlockPos pos) {
         return false;
     }*/
