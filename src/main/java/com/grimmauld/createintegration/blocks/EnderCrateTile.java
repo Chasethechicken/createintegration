@@ -87,11 +87,11 @@ public class EnderCrateTile extends SmartTileEntity implements INamedContainerPr
         updateItemHandler();
     }*/
 
-    @Override
+    /* @Override
     public CompoundNBT write(CompoundNBT tag) {
         tag.putInt("ender_id", id.getValue());
         return super.write(tag);
-    }
+    } */
 
     @Override
     public void addBehaviours(List<TileEntityBehaviour> behaviours) {

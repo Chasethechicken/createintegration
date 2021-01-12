@@ -63,8 +63,8 @@ public class DynamoTile extends KineticTileEntity implements ITickableTileEntity
 
 
     private void sendOutPower() {
-        /*energy.ifPresent(energy -> { // FIXME
-            if (energy.getEnergyStored() > 0 && getBlockState().has(BlockStateProperties.FACING)) {
+        energy.ifPresent(energy -> {
+            if (energy.getEnergyStored() > 0 && getBlockState().getProperties().contains(BlockStateProperties.FACING)) {
                 Direction direction = getBlockState().get(BlockStateProperties.FACING).getOpposite();
                 assert world != null;
                 TileEntity te = world.getTileEntity(pos.offset(direction));
@@ -77,7 +77,7 @@ public class DynamoTile extends KineticTileEntity implements ITickableTileEntity
                 }
             }
         });
-        markDirty();*/
+        markDirty();
     }
 
 
@@ -89,14 +89,14 @@ public class DynamoTile extends KineticTileEntity implements ITickableTileEntity
 //        super.read(tag);
     }*/
 
-    @Override
+    /* @Override
     public CompoundNBT write(CompoundNBT tag) {
         energy.ifPresent(h -> {
             CompoundNBT compound = ModUtil.safeNBTCast(h).serializeNBT();
             tag.put("energy", compound);
         });
         return super.write(tag);
-    }
+    } */
 
 
     private IEnergyStorage createEnergy() {

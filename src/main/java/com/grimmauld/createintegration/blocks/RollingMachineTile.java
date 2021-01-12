@@ -68,9 +68,9 @@ public class RollingMachineTile extends BeltMachineTile {
         return Config.ROLLER_SU.get();
     }
 
-    @Override // FIXME
+    @Override
     public void tick() {
-
+        super.tick();
     }
 }
 

@@ -26,10 +26,10 @@ public class RollingMachineTileEntityRenderer extends SafeTileEntityRenderer<Rol
         super(dispatcher);
     }
 
-    @Override
+    /* @Override
     public void render(RollingMachineTile tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
         // FIXME
-    }
+    } */
 
     @Override
     protected void renderSafe(RollingMachineTile te, float partialTicks, MatrixStack ms, IRenderTypeBuffer buffer, int light,

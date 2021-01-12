@@ -4,6 +4,7 @@ import com.grimmauld.createintegration.CreateIntegration;
 import com.grimmauld.createintegration.blocks.AnimatedRoller;
 import com.grimmauld.createintegration.blocks.ModBlocks;
 import com.grimmauld.createintegration.recipes.RollingRecipe;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.simibubi.create.foundation.gui.AllGuiTextures;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -85,14 +86,14 @@ public class RollingCategory implements IRecipeCategory<RollingRecipe> {
     }
 
 
-    /*@Override // FIXME
-    public void draw(@Nonnull RollingRecipe recipe, double mouseX, double mouseY) {
-        AllGuiTextures.JEI_SLOT.draw(26, 8);
-        AllGuiTextures.JEI_SLOT.draw(131, 8);
+    @Override
+    public void draw(@Nonnull RollingRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+        AllGuiTextures.JEI_SLOT.draw(matrixStack, 26, 8);
+        AllGuiTextures.JEI_SLOT.draw(matrixStack, 131, 8);
 
-        AllGuiTextures.JEI_SHADOW.draw(59, 45);
-        AllGuiTextures.JEI_LONG_ARROW.draw(52, 12);
+        AllGuiTextures.JEI_SHADOW.draw(matrixStack, 59, 45);
+        AllGuiTextures.JEI_LONG_ARROW.draw(matrixStack, 52, 12);
 
-        roller.draw(72, 25);
-    }*/
+        roller.draw(matrixStack, 72, 25);
+    }
 }

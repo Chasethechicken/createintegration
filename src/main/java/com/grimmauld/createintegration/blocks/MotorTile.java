@@ -82,14 +82,14 @@ public class MotorTile extends GeneratingKineticTileEntity {
         super.read(tag);
     }*/
 
-    @Override
+    /* @Override
     public CompoundNBT write(CompoundNBT tag) {
         energy.ifPresent(h -> {
             CompoundNBT compound = ModUtil.safeNBTCast(h).serializeNBT();
             tag.put("energy", compound);
         });
         return super.write(tag);
-    }
+    } */
 
     private IEnergyStorage createEnergy() {
         return new CustomEnergyStorage(Config.MOTOR_CAPACITY.get(), Config.MOTOR_MAXINPUT.get(), 0);

@@ -9,6 +9,7 @@ import com.simibubi.create.content.contraptions.relays.belt.BeltHelper;
 import com.simibubi.create.content.contraptions.relays.belt.BeltTileEntity;
 import com.simibubi.create.content.contraptions.relays.belt.transport.TransportedItemStack;
 import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
+import com.simibubi.create.foundation.tileEntity.behaviour.belt.TransportedItemStackHandlerBehaviour.TransportedResult;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.BlockItem;
@@ -39,14 +40,14 @@ import java.util.Random;
 
 import static com.grimmauld.createintegration.blocks.BeltMachine.RUNNING;
 
-public abstract class BeltMachineTile extends KineticTileEntity {
+public abstract class BeltMachineTile extends BeltTileEntity {
     public ProcessingInventory inventory;
     protected int recipeIndex;
     protected int recipeNumber;
     protected LazyOptional<IItemHandler> invProvider;
     protected boolean destroyed;
 
-    public BeltMachineTile(TileEntityType<?> TET) {
+    public BeltMachineTile(TileEntityType<? extends BeltTileEntity> TET) {
         super(TET);
         inventory = new ProcessingInventory(this::start);
         inventory.remainingTime = -1;
@@ -90,13 +91,13 @@ public abstract class BeltMachineTile extends KineticTileEntity {
         }
     }
 
-    @Override
+    /* @Override
     public CompoundNBT write(CompoundNBT compound) {
         compound.put("Inventory", inventory.serializeNBT());
         compound.putInt("RecipeIndex", recipeIndex);
         compound.putInt("RecipeNumber", recipeNumber);
         return super.write(compound);
-    }
+    } */
 
     /*@Override  // FIXME
     public void read(CompoundNBT compound) {
@@ -106,9 +107,9 @@ public abstract class BeltMachineTile extends KineticTileEntity {
         recipeNumber = compound.getInt("RecipeNumber");
     }*/
 
-    /*@Override // FIXME
+    @Override
     public void tick() {
-        super.tick();
+        // super.tick(); // FIXME
         if (getSpeed() == 0)
             return;
 
@@ -123,7 +124,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                 BeltTileEntity controllerTE = beltTE.getControllerTE();
                 if (controllerTE == null)
                     return;
-                controllerTE.getInventory().forEachWithin(beltTE.index + (beltTE.index > 0 ? 1 : 0), .1f, stack -> {
+                controllerTE.getInventory().applyToEachWithin(beltTE.index + (beltTE.index > 0 ? 1 : 0), .1f, stack -> {
                     ItemStack insertStack = stack.stack.copy();
                     List<TransportedItemStack> returnList = new ArrayList<>();
                     returnList.add(stack);
@@ -131,18 +132,18 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                         inventory.insertItem(0, insertStack, false);
                         this.markDirty();
                         controllerTE.markDirty();
-                        return Collections.emptyList();
+                        return TransportedResult.convertTo(Collections.emptyList());
                     } else if (inventory.getStackInSlot(0).getItem().equals(insertStack.getItem())) {
                         if (inventory.getStackInSlot(0).getCount() + insertStack.getCount() > 64) {
                             stack.stack.setCount(stack.stack.getCount() + inventory.getStackInSlot(0).getCount() - 64);
                             inventory.getStackInSlot(0).setCount(64);
-                            return returnList;
+                            return TransportedResult.convertTo(returnList);
                         } else {
                             inventory.getStackInSlot(0).setCount(inventory.getStackInSlot(0).getCount() + insertStack.getCount());
-                            return Collections.emptyList();
+                            return TransportedResult.convertTo(Collections.emptyList());
                         }
                     }
-                    return returnList;
+                    return TransportedResult.convertTo(returnList);
 
 
                 });
@@ -176,7 +177,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                 start();
             markDirty();
         }
-    }*/
+    }
 
     protected void ejectItems(ItemStack outputStack) {
         if (outputStack.isEmpty()) {
@@ -190,19 +191,19 @@ public abstract class BeltMachineTile extends KineticTileEntity {
         Vector3d outPos = VecHelper.getCenterOf(pos).add(itemMovement.scale(.5f).add(0.0, .5, 0.0));
         Vector3d outMotion = itemMovement.scale(.0625).add(0.0, .125, 0.0);
 
-        /*// Try moving items onto the belt  // FIXME
+        // Try moving items onto the belt
         BlockPos nextPos = pos.add(itemMovement.x, itemMovement.y, itemMovement.z);
         assert world != null;
         if (AllBlocks.BELT.has(world.getBlockState(nextPos))) {
             TileEntity te = world.getTileEntity(nextPos);
             if (te instanceof BeltTileEntity) {
-                if (((BeltTileEntity) te).tryInsertingFromSide(itemMovementFacing, outputStack, false)) {
+                /* if (!((BeltTileEntity) te).tryInsertingFromSide(new TransportedItemStack(outputStack), itemMovementFacing, false).isEmpty()) { // FIXME
                     return;
+                } */
                 }
             }
-        }*/
 
-        /*// Try moving items onto next saw/belt machine // FIXME
+        // Try moving items onto next saw/belt machine
         if (AllBlocks.MECHANICAL_SAW.has(world.getBlockState(nextPos)) || world.getBlockState(nextPos).getBlock() instanceof BeltMachine) {
             TileEntity te = world.getTileEntity(nextPos);
             if (te != null) {
@@ -229,7 +230,7 @@ public abstract class BeltMachineTile extends KineticTileEntity {
                     }
                 }
             }
-        }*/
+        }
 
         // Eject Items
         ItemEntity entityIn = new ItemEntity(world, outPos.x, outPos.y, outPos.z, outputStack);
