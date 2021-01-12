@@ -92,7 +92,22 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
+    }
+    maven {
+        // Curse Maven, hosts Create
+        name = "CurseMaven"
         url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
 }
 
@@ -105,8 +120,6 @@ dependencies {
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"
-    compile 'curse.maven:jei-238222:3157864'
-    compile 'curse.maven:create-328085:3158185'
 
     // Real examples
     // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
@@ -117,6 +130,12 @@ dependencies {
 
     // These dependencies get remapped to your current MCP mappings
     // deobf 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+    implementation fg.deobf('curse.maven:create-328085:3158185')
+
+    // compile against the JEI API but do not include it at runtime
+    compileOnly fg.deobf('mezz.jei:jei-1.16.4:7.6.1.65')
+    // at runtime, use the full JEI jar
+    runtimeOnly fg.deobf('mezz.jei:jei-1.16.4:7.6.1.65')
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
