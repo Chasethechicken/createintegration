@@ -11,7 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Vector3f;
+//import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
@@ -66,8 +66,8 @@ public class RollingMachineTileEntityRenderer extends SafeTileEntityRenderer<Rol
 
             ms.scale(.5f, .5f, .5f);
             if (alongZ)
-                ms.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(90));
-            ms.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(90));
+            //ms.multiply(Vector3d.POSITIVE_Y.getDegreesQuaternion(90));
+            //ms.multiply(Vector3d.POSITIVE_X.getDegreesQuaternion(90));
             itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, light, overlay, ms, buffer);
             ms.pop();
         }
@@ -77,4 +77,11 @@ public class RollingMachineTileEntityRenderer extends SafeTileEntityRenderer<Rol
         BlockState state = te.getBlockState();
         return AllBlockPartials.SHAFT_HALF.renderOnDirectional(state.rotate(rot));
     }
+
+	@Override
+	public void render(RollingMachineTile tileEntityIn, float partialTicks, MatrixStack matrixStackIn,
+			IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
+		// TODO Auto-generated method stub
+		
+	}
 }
