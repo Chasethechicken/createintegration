@@ -32,9 +32,4 @@ public class AnimatedRoller extends AnimatedKinetics {
 
         RenderSystem.popMatrix();
     }
-
-    @Override
-    public void draw(MatrixStack matrixStack, int i, int i1) {
-         // FIXME
-    }
 }
